@@ -33,19 +33,22 @@ public class TeacherAddServlet extends HttpServlet {
 		Connection con = dm.getConnection();
 		int num = 0;
 		int resultid=0;
+		System.out.print(resultid);
 		try {
 			ResultSet rs=null;
-			String sql="select max(teacher_id) from teacher";
+			String sql="select max(teacher_id) as id from teacher;";
 			if(con!=null){
 				rs=dm.executeQuery(sql);
 			}
 			if(rs!=null){
 				rs.next();
-				String result=rs.getString("teacher_id");
+				String result=rs.getString("id");
 				resultid=Integer.parseInt(result);
+				resultid+=1;
 			}
+			System.out.print(resultid);
 			PreparedStatement pstmt = con.prepareStatement("insert into teacher values (?,?,?,?,?,?,?)");
-			pstmt.setInt(1, resultid+1);
+			pstmt.setInt(1, resultid);
 			pstmt.setString(2, teacher_name);
 			pstmt.setInt(3, teacher_dept_id);
 			pstmt.setString(4, teacher_title);
