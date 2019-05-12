@@ -23,7 +23,6 @@ public class TeacherAddServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		String teacher_name = request.getParameter("teacher_name");
-		System.out.println(teacher_name);
 		if (teacher_name.length()!=0) {
 		int teacher_dept_id = Integer.parseInt(request.getParameter("teacher_dept_id"));
 		String teacher_title = request.getParameter("teacher_title");
@@ -33,14 +32,26 @@ public class TeacherAddServlet extends HttpServlet {
 		DatabaseManage dm = new DatabaseManage();
 		Connection con = dm.getConnection();
 		int num = 0;
+		int resultid=0;
 		try {
-			PreparedStatement pstmt = con.prepareStatement("insert into teacher values (null,?,?,?,?,?,?)");
-			pstmt.setString(1, teacher_name);
-			pstmt.setInt(2, teacher_dept_id);
-			pstmt.setString(3, teacher_title);
-			pstmt.setString(4, teacher_tel);
-			pstmt.setString(5, teacher_address);
-			pstmt.setString(6, teacher_email);
+			ResultSet rs=null;
+			String sql="select max(teacher_id) from teacher";
+			if(con!=null){
+				rs=dm.executeQuery(sql);
+			}
+			if(rs!=null){
+				rs.next();
+				String result=rs.getString("teacher_id");
+				resultid=Integer.parseInt(result);
+			}
+			PreparedStatement pstmt = con.prepareStatement("insert into teacher values (?,?,?,?,?,?,?)");
+			pstmt.setInt(1, resultid+1);
+			pstmt.setString(2, teacher_name);
+			pstmt.setInt(3, teacher_dept_id);
+			pstmt.setString(4, teacher_title);
+			pstmt.setString(5, teacher_tel);
+			pstmt.setString(6, teacher_address);
+			pstmt.setString(7, teacher_email);
 			num = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
