@@ -161,6 +161,7 @@
 	<%
 		dm.close();
 	%>
+	</center>
 </body>
 <script language="javascript">
   	function fatherDeptOnChange() {

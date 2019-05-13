@@ -8,7 +8,7 @@
 <body>
 	<h1 align="center">修改管理员登录密码</h1>
 	<center>
-	<%
+		<%
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		DatabaseManage dm = new DatabaseManage();
@@ -21,7 +21,7 @@
 			username = (String) session.getAttribute("username");
 		if (username != null) {
 			out.println("用户登录成功，欢迎您：" + username);
-	%>
+		%>
 	</center>
 	<p>
 	<center>

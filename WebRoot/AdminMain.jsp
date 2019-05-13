@@ -38,5 +38,6 @@
 	<%
 		}
 	%>
+	</center>
 </body>
 </html>
