@@ -22,7 +22,7 @@
 		<table width="80%">
 			<tr>
 				<td><a href="Teacher.jsp">查看校内所有教师信息</a></td>
-				<td><a href="TeacherQuery.jsp">模糊搜索</a></td>
+				<td><a href="TeacherQuery.jsp">模糊查询</a></td>
 			</tr>
 			<tr>
 				<td><a href="AdminLogin.jsp">管理员登录</a></td>

@@ -22,7 +22,7 @@
 		if (username != null)
 			adminLoggedIn = true;
 		con = dm.getConnection();
-		String sql = "select * from teacher where teacher_name like '%" + teacher_name + "%'";
+		String sql = "select * from teacher,department where dept_id=teacher_dept_id and teacher_name like '%" + teacher_name + "%'";
 		if (con != null) {
 			rs = dm.executeQuery(sql);
 		}
@@ -46,7 +46,7 @@
 					out.println("<tr>");
 					out.println("<td>" + rs.getString("teacher_id") + "</td>");
 					out.println("<td>" + rs.getString("teacher_name") + "</td>");
-					out.println("<td>" + rs.getString("teacher_dept_id") + "</td>");
+					out.println("<td>" + rs.getString("dept_name") + "</td>");
 					out.println("<td>" + rs.getString("teacher_title") + "</td>");
 					out.println("<td>" + rs.getString("teacher_tel") + "</td>");
 					out.println("<td>" + rs.getString("teacher_address") + "</td>");
