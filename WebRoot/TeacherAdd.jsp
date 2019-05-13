@@ -102,6 +102,14 @@
 	<%
 		} else {
 			out.println("请先登录");
+	%>
+		<p>
+		<center>
+				<td><a href="AdminLogin.jsp">登录</a></td>
+				<p>
+				<td><a href="index.jsp">回到主页</a></td>
+		</center>
+	<%
 		}
 	%>
 </body>

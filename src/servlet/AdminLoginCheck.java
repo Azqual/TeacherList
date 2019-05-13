@@ -26,19 +26,24 @@ public class AdminLoginCheck extends HttpServlet {
 		String password = request.getParameter("password");
 		DatabaseManage dm = new DatabaseManage();
 		Connection con = null;
-		ResultSet rs = null;
-		boolean result = false;
 		con = dm.getConnection();
-		String sql = "select * from user where username=" + "\"" + adminname + "\"" + " and password=" + "\"" + password
-				+ "\"";
-		if (con != null) {
-			rs = dm.executeQuery(sql);
-		}
+		ResultSet rs = null;  
+		boolean result=false;
 		try {
-			if (rs != null) {
-				result = rs.next();
-			}
+			PreparedStatement pstmt = con.prepareStatement("select * from user where username= ? and password= ? ");
+			pstmt.setString(1, adminname);
+			pstmt.setString(2, password);
+			rs = pstmt.executeQuery();
+			
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		try{
+			if(rs!=null){
+				result=rs.next();			
+			}
+		}
+		catch(Exception e){
 			e.printStackTrace();
 		}
 		if (result) {
@@ -52,6 +57,7 @@ public class AdminLoginCheck extends HttpServlet {
 		}
 		dm.close();
 	}
+	
 
 	public void init() throws ServletException {
 		super.init();

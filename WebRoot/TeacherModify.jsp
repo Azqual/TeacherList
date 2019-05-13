@@ -23,6 +23,7 @@
 			rs.absolute(1);
 		}
 	%>
+	<center>
 	<%
 		String username = null;
 		session = request.getSession(false);
@@ -31,6 +32,8 @@
 		if (username != null) {
 			out.println("用户登录成功，欢迎您：" + username);
 	%>
+	<p>
+	</center>
 	<center>
 		<form id="teachermodify" name="teachermodify" method="post"
 			action="servlet/TeacherModiServlet">
@@ -144,8 +147,17 @@
 	<%
 		} else {
 			out.println("请先登录");
+	%>
+			<p>
+		<center>
+				<td><a href="AdminLogin.jsp">登录</a></td>
+				<p>
+				<td><a href="index.jsp">回到主页</a></td>
+		</center>
+	<%
 		}
 	%>
+	
 	<%
 		dm.close();
 	%>

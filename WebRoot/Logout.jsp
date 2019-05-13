@@ -11,12 +11,10 @@
 			session.invalidate();
 		%>
 		<h2>管理员注销成功！</h2>
-		<table width="80%">
-			<tr>
+		<center>
 				<td><a href="AdminLogin.jsp">重新登录</a></td>
+				<p>
 				<td><a href="index.jsp">回到主页</a></td>
-			</tr>
-		</table>
-	</center>
+		</center>
 </body>
 </html>

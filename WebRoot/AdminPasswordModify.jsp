@@ -7,6 +7,7 @@
 </head>
 <body>
 	<h1 align="center">修改管理员登录密码</h1>
+	<center>
 	<%
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -21,6 +22,8 @@
 		if (username != null) {
 			out.println("用户登录成功，欢迎您：" + username);
 	%>
+	</center>
+	<p>
 	<center>
 		<form id="adminpasswordmodify" name="adminpasswordmodify"
 			method="post" action="servlet/AdminPasswordModiServlet">
@@ -44,9 +47,15 @@
 	<%
 		} else {
 			out.println("请先登录");
-		}
 	%>
+		<p>
+		<center>
+				<td><a href="AdminLogin.jsp">登录</a></td>
+				<p>
+				<td><a href="index.jsp">回到主页</a></td>
+		</center>
 	<%
+		}
 		dm.close();
 	%>
 </body>

@@ -52,16 +52,20 @@
 					out.println("<td>" + rs.getString("teacher_address") + "</td>");
 					out.println("<td>" + rs.getString("teacher_email") + "</td>");
 					if (adminLoggedIn) {
-						out.println("<a href=" + "TeacherModify.jsp?teacher_id=" + rs.getString("teacher_id")
+						out.println("<td><a href=" + "TeacherModify.jsp?teacher_id=" + rs.getString("teacher_id")
 								+ ">修改</a>");
 						out.println("<a href=" + "TeacherDelete.jsp?teacher_id=" + rs.getString("teacher_id")
-								+ ">删除</a>");
+								+ ">删除</a></td>");
 					}
 					out.println("</tr>");
 				}
 				out.println("</table>");
-				out.println("<a href=\"index.jsp\">返回主页</a>");
+				out.println("<p><center><a href=\"index.jsp\">返回主页</a></center>");
 			}
+			else{
+				out.println("<p>");
+				out.println("<h3 align=\"center\">查无此人</h3>");
+				}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -7,6 +7,7 @@
 </head>
 <body>
 	<h1 align="center">删除教师信息</h1>
+	<center>
 	<%
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -21,6 +22,9 @@
 			username = (String) session.getAttribute("username");
 		if (username != null) {
 			out.println("用户登录成功，欢迎您：" + username);
+			%>
+			<p>
+			<%
 			String sql = "delete from teacher where teacher_id='" + teacher_id + "'";
 			if (con != null) {
 				if (dm.executeUpdate(sql) > 0)
@@ -31,6 +35,14 @@
 			}
 		} else {
 			out.println("请先登录");
+	%>
+		<p>
+		<center>
+				<td><a href="AdminLogin.jsp">登录</a></td>
+				<p>
+				<td><a href="index.jsp">回到主页</a></td>
+		</center>
+	<%
 		}
 		dm.close();
 	%>
